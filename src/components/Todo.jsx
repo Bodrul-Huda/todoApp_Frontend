@@ -61,7 +61,7 @@ export default function Todo() {
   // console.log("Store:", store);
   return (
     <>
-      <div className="py-10">
+      <div className="py-10 min-h-screen bg-gray-100">
         {/* Form for adding tasks */}
         <div className="flex justify-center mb-4">
           <button
@@ -71,7 +71,7 @@ export default function Todo() {
             {show ? "Hide Form" : "Add Task"}
           </button>
         </div>
-        {show && <TodoForm setShow={setShow} />}
+        {show && <TodoForm setShow={setShow} refetch={fetchTasks} />}
 
         {/* Displaying the list of tasks */}
         <div className="container mx-auto flex flex-row justify-center items-start gap-4 py-4">

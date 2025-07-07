@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ const Signup = () => {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate();
   const URL = import.meta.env.VITE_BASE_URL;
 
   const handleChange = (e) => {
@@ -33,7 +34,8 @@ const Signup = () => {
       });
 
       toast.success("Sign up successful!");
-      console.log(response.data);
+      navigate("/signin");
+      // console.log(response.data);
     } catch (error) {
       toast.error(
         error.response?.data?.message ||

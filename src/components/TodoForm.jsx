@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const TodoForm = ({ setShow }) => {
+const TodoForm = ({ setShow, refetch }) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -40,6 +40,7 @@ const TodoForm = ({ setShow }) => {
       });
       toast.success("Task added successfully!");
       setShow(false); // Hide the form after submission
+      refetch(); // Call the refetch function to update the task list
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
